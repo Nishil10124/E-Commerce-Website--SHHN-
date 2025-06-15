@@ -1,0 +1,179 @@
+body
+{
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+}
+h1
+{
+    width: 90%;
+    margin: 30px auto;
+    padding: 0;
+    letter-spacing: 2px;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+#mainContainer {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+#containerClothing,
+#containerAccessories,
+#containerGlasses,
+#containerPerfumes
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 0 0 40px 0;
+}
+#box 
+{
+    flex: 0 1 calc(20% - 30px);
+    min-width: 200px;
+    max-width: 300px;
+    background-color: white;
+    align-content: center;
+    border-radius: 10px;
+    box-shadow: 1px 2px 6px 2px rgb(219, 219, 219);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+#box a {
+    text-decoration: none;
+    color: rgb(29, 29, 29);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+#box img {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+    background-color: #f8f8f8;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin: 0;
+    padding: 0;
+    display: block;
+    flex-shrink: 0;
+}
+#box:hover
+{
+    box-shadow: 1px 6px 3px 0 rgb(185, 185, 185);
+    transform: translateY(-5px);
+}
+#containerClothing img,
+#containerAccessories img,
+#containerGlasses img,
+#containerPerfumes img {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+    background-color: #f8f8f8;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+/* Special styling for perfume images */
+#containerPerfumes img {
+    object-fit: contain;
+    padding: 15px;
+    background-color: #f8f8f8;
+}
+
+/* Special styling for glasses images */
+#containerGlasses img {
+    object-fit: contain;
+    padding: 15px;
+    height: 250px;
+    background-color: #f8f8f8;
+}
+
+#details
+{
+    padding: 15px;
+    text-transform: capitalize;
+    margin: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+h3
+{
+    font-size: 16px;
+    margin: 15px 0 10px;
+}
+h4
+{
+    font-weight: 100;
+    margin: 10px 0;
+}
+h2
+{
+    color: rgb(3, 94, 94);
+    margin: 10px 0;
+}
+
+/* ----------------------------- MEDIA QUERY --------------------------- */
+
+@media(max-width: 1200px)
+{
+    #box {
+        flex: 0 1 calc(25% - 30px); /* 4 items per row */
+    }
+}
+@media(max-width: 992px)
+{
+    #box {
+        flex: 0 1 calc(33.333% - 30px); /* 3 items per row */
+    }    
+}
+@media(max-width: 768px)
+{
+    #box {
+        flex: 0 1 calc(50% - 30px); /* 2 items per row */
+    }
+    
+    #box img {
+        height: 250px;
+    }
+}
+@media(max-width: 480px)
+{
+    #box {
+        flex: 0 1 calc(100% - 30px); /* 1 item per row */
+    }
+
+    h1 {
+        font-size: 20px;
+        text-align: center;
+    }
+}
+
+/* Update spacing for fixed header */
+.content-wrapper {
+    padding-top: 80px;
+    position: relative;
+    z-index: 1;
+    }
+
+/* Ensure the loader stays on top */
+.loader-wrapper {
+    z-index: 2000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

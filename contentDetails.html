@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DETAILS | SHHN GROUP</title>
+    <!-- favicon -->
+    <link rel="icon" href="img/shn-logo.png" type="image/png">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/contentDetails.css">
+    <link rel="stylesheet" href="css/header.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content-wrapper {
+            flex: 1;
+            padding-top: 80px;
+        }
+
+        #containerProduct {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .user-icon-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .user-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: rgb(29, 29, 29);
+            transition: color 0.3s ease;
+        }
+        
+        .user-link:hover {
+            color: rgb(3, 122, 122);
+        }
+        
+        .user-name {
+            margin-left: 8px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .userIcon {
+            font-size: 35px;
+        }
+
+        #user {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .addedToCart {
+            font-size: 24px;
+            color: rgb(29, 29, 29);
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .addedToCart:hover {
+            color: rgb(3, 122, 122);
+        }
+
+        #badge {
+            position: absolute;
+            background-color: rgb(255, 30, 30);
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 12px;
+            top: -8px;
+            right: -8px;
+            min-width: 18px;
+            text-align: center;
+        }
+
+        .preview-images {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .previewImg {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border: 2px solid transparent;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .previewImg:hover {
+            border-color: #1d1d1d;
+        }
+
+        .previewImg.active {
+            border-color: #1d1d1d;
+            transform: scale(1.05);
+        }
+
+        #imgDetails {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        #imageSection {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        #productPreview {
+            margin-top: 20px;
+        }
+
+        #productPreview h3 {
+            margin-bottom: 10px;
+            color: #1d1d1d;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <div id="1"></div>
+
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+        <div id="containerProduct">
+            <!-- JS rendered code -->
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div id="4"></div>
+
+    <script>
+        function load(url) {
+            return new Promise((resolve, reject) => {
+                const req = new XMLHttpRequest();
+                req.open("GET", url, true);
+                req.onload = () => {
+                    if (req.status === 200) {
+                        if (url.includes('header')) {
+                            document.getElementById('1').innerHTML = req.responseText;
+                        } else if (url.includes('footer')) {
+                            document.getElementById('4').innerHTML = req.responseText;
+                        }
+                        resolve();
+                    } else {
+                        reject(new Error(`Failed to load ${url}`));
+                    }
+                };
+                req.onerror = () => reject(new Error('Network error'));
+                req.send();
+            });
+        }
+
+        // Load header and footer
+        Promise.all([
+            load("header.html"),
+            load("footer.html")
+        ]).then(() => {
+            console.log('Header and footer loaded successfully');
+        }).catch(error => {
+            console.error('Error loading components:', error);
+        });
+    </script>
+
+    <!-- Load data files first -->
+    <script src="js/perfumeData.js"></script>
+    <!-- Then load the main script -->
+    <script src="contentDetails.js"></script>
+</body>
+</html>

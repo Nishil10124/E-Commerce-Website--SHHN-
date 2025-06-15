@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <link rel="stylesheet" href="/style.css"> -->
+    <title >SHHN GROUP | E-COMMERCE WEBSITE </title>
+    <!-- favicon -->
+    <link rel="icon" href="img/shn-logo.png" type="image/png">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <!-- slider links -->
+    <!-- <script src="http://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
+    <link rel="stylesheet" href="css/content.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/header.css">
+    <style>
+        .user-icon-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .user-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: rgb(29, 29, 29);
+            transition: color 0.3s ease;
+        }
+        
+        .user-link:hover {
+            color: rgb(3, 122, 122);
+        }
+        
+        .user-name {
+            margin-left: 8px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .userIcon {
+            font-size: 35px;
+        }
+
+        #user {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .addedToCart {
+            font-size: 24px;
+            color: rgb(29, 29, 29);
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .addedToCart:hover {
+            color: rgb(3, 122, 122);
+        }
+
+        #badge {
+            position: absolute;
+            background-color: rgb(255, 30, 30);
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 12px;
+            top: -8px;
+            right: -8px;
+            min-width: 18px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Loading Animation -->
+    <div class="loader-wrapper">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+        <!-- HEADER -->
+        <header>
+            <section>
+                <!-- MAIN CONTAINER -->
+                <div id="container">
+                    <!-- SHOP NAME -->
+                    <div id="shopName">
+                        <a href="index.html">
+                            <img src="img/shn-logo.png" alt="SHN Logo" style="margin-right: 10px;">
+                        </a>
+                    </div>
+                    <!-- COLLECTIONS ON WEBSITE -->
+                    <div id="collection">
+                        <div id="clothing"><a href="clothing.html">CLOTHING</a></div>
+                        <div id="accessories"><a href="accessories.html">ACCESSORIES</a></div>
+                        <div id="glasses"><a href="glasses.html">GLASSES</a></div>
+                        <div id="perfumes"><a href="perfumes.html">PERFUMES</a></div>
+                    </div>
+                    <!-- SEARCH SECTION -->
+                    <div id="search">
+                        <i class="fas fa-search search"></i>
+                        <input type="text" id="input" name="searchBox" placeholder="Search for Clothing and Accessories">
+                    </div>
+                    <!-- USER SECTION (CART AND USER ICON) -->
+                    <div id="user">
+                        <a href="cart.html"><i class="fas fa-shopping-cart addedToCart"><div id="badge">0</div></i></a>
+                        <div class="user-icon-container">
+                            <a href="login.html" id="userLink" class="user-link">
+                                <i class="fas fa-user-circle userIcon"></i>
+                                <span id="userName" class="user-name"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </header>
+
+        <!-- SLIDER -->
+        <div id="2"></div>
+        <script>
+            load("slider.html");
+            function load(url)
+            {
+                req = new XMLHttpRequest();
+                req.open("GET", url, false);
+                req.send(null);
+                document.getElementById(2).innerHTML = req.responseText;
+            }
+        </script>
+
+        <!-- CONTENT SECTION -->
+        <div id="3"></div>
+        <script>
+            load("content.html");
+            function load(url)
+            {
+                req = new XMLHttpRequest();
+                req.open("GET", url, false);
+                req.send(null);
+                document.getElementById(3).innerHTML = req.responseText;
+            }
+        </script>
+
+        <!-- FOOTER -->
+        <div id="4"></div>
+        <script>
+            load("footer.html");
+            function load(url)
+            {
+                req = new XMLHttpRequest();
+                req.open("GET", url, false);
+                req.send(null);
+                document.getElementById(4).innerHTML = req.responseText;
+            }
+        </script>
+    </div>
+
+    <!-- Loading Animation Script -->
+    <script>
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const loader = document.querySelector('.loader-wrapper');
+                loader.classList.add('fade-out');
+                setTimeout(function() {
+                    loader.style.display = 'none';
+                }, 500);
+            }, 1000);
+        });
+    </script>
+
+    <!-- Load Slick Carousel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+    <script>
+        $(document).ready(function()
+        {
+            $('#containerSlider').slick({
+                dots: true,
+                infinite: true,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 1500,
+            });
+        });
+    </script>
+
+    <!-- Load data files with error handling -->
+    <script>
+        function loadScript(src) {
+            return new Promise((resolve, reject) => {
+                const script = document.createElement('script');
+                script.src = src;
+                script.onload = () => resolve();
+                script.onerror = () => {
+                    console.error('Failed to load script:', src);
+                    reject(new Error(`Script load error for ${src}`));
+                };
+                document.body.appendChild(script);
+            });
+        }
+
+        // Load scripts in sequence
+        Promise.all([
+            loadScript('js/perfumeData.js'),
+            loadScript('js/glassesData.js')
+        ]).then(() => {
+            return loadScript('content.js');
+        }).catch(error => {
+            console.error('Error loading scripts:', error);
+        });
+    </script>
+
+    <!-- Check if user is logged in -->
+    <script>
+        let userData = localStorage.getItem('userData');
+        if (userData) {
+            userData = JSON.parse(userData);
+            document.getElementById('userLink').href = 'profile.html';
+            document.getElementById('userName').textContent = userData.name;
+        }
+    </script>
+</body>
+</html>

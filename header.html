@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> HEADER | E-COMMERCE WEBSITE </title>
+    <!-- favicon -->
+    <link rel="icon" href="img/shn-logo.png" type="image/png">
+    <!-- EXTERNAL LINKS -->
+    <link rel="stylesheet" href="css/header.css">
+    <script src="https://kit.fontawesome.com/4a3b1f73a2.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <style>
+        #shopName {
+            display: flex;
+            align-items: center;
+        }
+        #shopName img {
+            height: 60px;
+            width: auto;
+            vertical-align: middle;
+            transition: transform 0.3s ease;
+            object-fit: contain;
+            background-color: white;
+            padding: 5px;
+        }
+        #shopName img:hover {
+            transform: scale(1.1);
+        }
+        #shopName a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            #shopName img {
+                height: 45px;
+            }
+        }
+        @media (max-width: 480px) {
+            #shopName img {
+                height: 35px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <header>
+        <section>
+            <!-- MAIN CONTAINER -->
+            <div id="container">
+                <!-- SHOP NAME -->
+                <div id="shopName">
+                    <a href="index.html">
+                        <img src="img/shn-logo.png" alt="SHN Logo" style="margin-right: 10px;">
+                    </a>
+                </div>
+                    <!-- COLLCETIONS ON WEBSITE -->
+                    <div id="collection">
+                        <div id="clothing"><a href="clothing.html"> CLOTHING </a></div>
+                        <div id="accessories"><a href="accessories.html"> ACCESSORIES </a></div>
+                        <div id="glasses"><a href="glasses.html"> GLASSES </a></div>
+                        <div id="perfumes"><a href="perfumes.html"> PERFUMES </a></div>
+                    </div>
+                    <!-- SEARCH SECTION -->
+                    <div id="search">
+                        <i class="fas fa-search search"></i>
+                        <input type="text" id="input" name="searchBox" placeholder="Search for Clothing and Accessories">
+                    </div>
+                    <!-- USER SECTION (CART AND USER ICON) -->
+                    <div id="user">
+                        <a href="cart.html"> <i class="fas fa-shopping-cart addedToCart"><div id="badge"> 0 </div></i></a>
+                        <div class="user-icon-container">
+                            <a href="login.html" id="userLink"> <i class="fas fa-user-circle userIcon"></i> </a>
+                            <div id="userName" class="user-name"></div>
+                        </div>
+                    </div>
+            </div>
+        </section>
+    </header>
+
+    <script>
+        // Check if user is logged in
+        let userData = localStorage.getItem('userData');
+        if (userData) {
+            userData = JSON.parse(userData);
+            document.getElementById('userLink').href = 'profile.html';
+            document.getElementById('userName').textContent = userData.name;
+        }
+    </script>
+</body>
+</html>

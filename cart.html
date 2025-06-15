@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CART | SHHN GROUP</title>
+    <!-- favicon -->
+    <link rel="icon" href="img/shn-logo.png" type="image/png">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/header.css">
+    <style>
+        body {
+            margin: 0;
+            padding-top: 80px;
+            font-family: 'Lato', sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .cart-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .cart-header h1 {
+            color: #1d1d1d;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        #cartContainer {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .cart-item {
+            display: grid;
+            grid-template-columns: 100px 2fr 1fr 1fr auto;
+            gap: 20px;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .cart-item img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .item-details h3 {
+            margin: 0 0 5px 0;
+            color: #1d1d1d;
+        }
+
+        .item-details p {
+            margin: 0;
+            color: #666;
+        }
+
+        .item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-btn {
+            background: none;
+            border: 1px solid #ddd;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .quantity-btn:hover {
+            background: #f5f5f5;
+        }
+
+        .item-price {
+            font-weight: bold;
+            color: #1d1d1d;
+        }
+
+        .remove-btn {
+            background: none;
+            border: none;
+            color: #ff1e1e;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .remove-btn:hover {
+            color: #cc1818;
+        }
+
+        #totalContainer {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 20px;
+            text-align: right;
+        }
+
+        #totalContainer h2 {
+            margin: 0 0 20px 0;
+            color: #1d1d1d;
+        }
+
+        #placeOrder {
+            background-color: #1d1d1d;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        #placeOrder:hover {
+            background-color: #333;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .empty-cart i {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #ddd;
+        }
+
+        .empty-cart h3 {
+            margin: 0 0 20px 0;
+        }
+
+        .continue-shopping {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #1d1d1d;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .continue-shopping:hover {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <section>
+            <div id="container">
+                <div id="shopName">
+                    <a href="index.html">
+                        <img src="img/shn-logo.png" alt="SHN Logo" style="margin-right: 10px;">
+                    </a>
+                </div>
+                <div id="collection">
+                    <div id="clothing"><a href="clothing.html">CLOTHING</a></div>
+                    <div id="accessories"><a href="accessories.html">ACCESSORIES</a></div>
+                    <div id="glasses"><a href="glasses.html">GLASSES</a></div>
+                    <div id="perfumes"><a href="perfumes.html">PERFUMES</a></div>
+                </div>
+                <div id="search">
+                    <i class="fas fa-search search"></i>
+                    <input type="text" id="input" name="searchBox" placeholder="Search for Clothing and Accessories">
+                </div>
+                <div id="user">
+                    <a href="cart.html"><i class="fas fa-shopping-cart addedToCart"><div id="badge">0</div></i></a>
+                    <div class="user-icon-container">
+                        <a href="profile.html" id="userLink" class="user-link">
+                            <i class="fas fa-user-circle userIcon"></i>
+                            <span id="userName" class="user-name"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <div class="content-wrapper">
+        <div class="cart-header">
+            <h1>Shopping Cart</h1>
+            <p id="totalItem">Total Items: 0</p>
+        </div>
+        <div id="cartContainer">
+            <!-- Cart items will be rendered here -->
+        </div>
+        <div id="totalContainer">
+            <h2>Total Amount: Rs. <span id="totalAmount">0</span></h2>
+            <button id="placeOrder" onclick="placeOrder()">Place Order</button>
+        </div>
+    </div>
+
+    <!-- Load data files first -->
+    <script src="js/perfumeData.js"></script>
+    <script src="js/glassesData.js"></script>
+    <!-- Then load cart script -->
+    <script src="cart.js"></script>
+</body>
+</html>

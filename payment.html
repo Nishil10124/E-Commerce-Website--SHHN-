@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Payment | SHHN GROUP</title>
+    <link rel="stylesheet" href="css/payment.css">
+    <!-- favicon -->
+    <link rel="icon" href="https://yt3.ggpht.com/a/AGF-l78km1YyNXmF0r3-0CycCA0HLA_i6zYn_8NZEg=s900-c-k-c0xffffffff-no-rj-mo" type="image/gif" sizes="16x16">
+    <!-- header links -->
+    <script src="https://kit.fontawesome.com/4a3b1f73a2.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- HEADER -->
+    <div id="1"></div>
+    <script>
+        load("header.html");
+        function load(url)
+        {
+            req = new XMLHttpRequest();
+            req.open("GET", url, false);
+            req.send(null);
+            document.getElementById(1).innerHTML = req.responseText;
+        }
+    </script>
+
+    <!-- PAYMENT CONTAINER -->
+    <div id="paymentContainer">
+        <form id="paymentForm" action="php_backend/payment.php" onsubmit="return validateForm(event) " >
+            <h1>Shipping Address</h1>
+            <div id="addressSection">
+                <div class="addressForm">
+                    <input type="text" id="fullName" placeholder="Full Name" required pattern="[A-Za-z ]{3,50}" title="Please enter a valid name (3-50 characters, letters only)">
+                    <input type="text" id="streetAddress" placeholder="Street Address" required minlength="5" title="Please enter a valid street address">
+                    <input type="text" id="apartment" placeholder="Apartment, Suite, etc. (optional)">
+                    <div class="addressRow">
+                        <input type="text" id="city" placeholder="City" required pattern="[A-Za-z ]{2,30}" title="Please enter a valid city name">
+                        <input type="text" id="state" placeholder="State" required pattern="[A-Za-z ]{2,30}" title="Please enter a valid state name">
+                        <input type="text" id="zipCode" placeholder="ZIP Code" required pattern="[0-9]{6}" title="Please enter a valid 6-digit ZIP code">
+                    </div>
+                    <input type="tel" id="phone" placeholder="Phone Number" required pattern="[0-9]{10}" title="Please enter a valid 10-digit phone number">
+                </div>
+            </div>
+
+            <h1>Payment Options</h1>
+            <div id="paymentOptions">
+                <div class="paymentMethod">
+                    <input type="radio" id="creditCard" name="payment" value="creditCard" required>
+                    <label for="creditCard">Credit Card</label>
+                    <div class="paymentDetails" id="creditCardDetails">
+                        <input type="text" id="creditCardNumber" placeholder="Card Number" maxlength="16" pattern="[0-9]{16}" title="Please enter a valid 16-digit card number">
+                        <div class="cardInfo">
+                            <input type="text" id="creditExpiryDate" placeholder="MM/YY" maxlength="5" pattern="(0[1-9]|1[0-2])\/([0-9]{2})" title="Please enter a valid expiry date (MM/YY)">
+                            <input type="text" id="creditCVV" placeholder="CVV" maxlength="3" pattern="[0-9]{3}" title="Please enter a valid 3-digit CVV">
+                        </div>
+                        <input type="text" id="creditCardName" placeholder="Cardholder Name" pattern="[A-Za-z ]{3,50}" title="Please enter the cardholder name">
+                    </div>
+                </div>
+
+                <div class="paymentMethod">
+                    <input type="radio" id="debitCard" name="payment" value="debitCard">
+                    <label for="debitCard">Debit Card</label>
+                    <div class="paymentDetails" id="debitCardDetails">
+                        <input type="text" id="debitCardNumber" placeholder="Card Number" maxlength="16" pattern="[0-9]{16}" title="Please enter a valid 16-digit card number">
+                        <div class="cardInfo">
+                            <input type="text" id="debitExpiryDate" placeholder="MM/YY" maxlength="5" pattern="(0[1-9]|1[0-2])\/([0-9]{2})" title="Please enter a valid expiry date (MM/YY)">
+                            <input type="text" id="debitCVV" placeholder="CVV" maxlength="3" pattern="[0-9]{3}" title="Please enter a valid 3-digit CVV">
+                        </div>
+                        <input type="text" id="debitCardName" placeholder="Cardholder Name" pattern="[A-Za-z ]{3,50}" title="Please enter the cardholder name">
+                    </div>
+                </div>
+
+                <div class="paymentMethod">
+                    <input type="radio" id="upi" name="payment" value="upi">
+                    <label for="upi">UPI</label>
+                    <div class="paymentDetails" id="upiDetails">
+                        <input type="text" id="upiId" placeholder="Enter UPI ID" pattern="[a-zA-Z0-9.\-_]{2,256}@[a-zA-Z]{2,64}" title="Please enter a valid UPI ID">
+                    </div>
+                </div>
+
+                <div class="paymentMethod">
+                    <input type="radio" id="cod" name="payment" value="cod">
+                    <label for="cod">Cash on Delivery</label>
+                </div>
+            </div>
+
+            <div id="orderSummary">
+                <h2>Order Summary</h2>
+                <div id="totalAmount"></div>
+            </div>
+
+            <button type="submit" id="proceedToPayment">Proceed to Pay</button>
+        </form>
+    </div>
+
+    <!-- FOOTER -->
+    <div id="4"></div>
+    <script>
+        load("footer.html");
+        function load(url)
+        {
+            req = new XMLHttpRequest();
+            req.open("GET", url, false);
+            req.send(null);
+            document.getElementById(4).innerHTML = req.responseText;
+        }
+    </script>
+    <script src="payment.js"></script>
+</body>
+</html> 
